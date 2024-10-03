@@ -11,6 +11,10 @@
 
     # hardware
     hardware.url = "github:nixos/nixos-hardware";
+
+    # disko
+    disko.url = "githu:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -19,6 +23,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
+          ./nixos/disko-config.nix
+          #disko.nixosModules.disko
         ];
       };
     };
