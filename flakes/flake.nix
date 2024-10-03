@@ -10,7 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # hardware
-    hardware.url = "github:nixos/nixos-hardware"
+    hardware.url = "github:nixos/nixos-hardware";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -18,12 +18,12 @@
       uzawa = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nixos/cofiguration.nix
+          ./nixos/configuration.nix
         ];
       };
     };
     homeConfigurations = {
-      reisa@uzawa = home-manager.lib.homeManagerConfiguration {
+      "reisa@uzawa" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacypackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [
