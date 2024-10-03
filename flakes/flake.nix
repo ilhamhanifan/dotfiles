@@ -23,8 +23,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
-          ./nixos/disko-config.nix
           #disko.nixosModules.disko
+          ./nixos/disko.nix
         ];
       };
     };
